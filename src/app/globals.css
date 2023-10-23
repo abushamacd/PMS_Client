@@ -2,26 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Autour+One&family=Roboto+Slab:wght@300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Roboto Slab", sans-serif;
+  margin: 0;
+  padding: 0;
+  letter-spacing: "0.3px";
+}
+/* "secondary-dark-bg": "#1D2434" */
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg_primary: #070e36;
+  --bg_secondary: #050b2f;
+  --text_primary: #2cbbff;
+  --text_secondary: #e5fafb;
+  --animation_color: #00ebe7;
+  --rounded-btn: 0.2rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg_secondary);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--text_primary);
+  border-radius: 6px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Autour One", sans-serif;
+  font-weight: 600;
+}
+
+.layout {
+  max-width: 1600px !important;
+  margin: 0 auto !important;
+}
+
+.box_shadow {
+  box-shadow: 0 0 10px var(--animation_color);
+}
+
+/* Authentication */
+.box {
+  position: relative;
+  width: 380px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  background: linear-gradient(0deg, transparent, #00ebe7, #00ebe7);
+  animation: animate 6s linear infinite;
+  transform-origin: bottom right;
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  background: linear-gradient(0deg, transparent, #00ebe7, #00ebe7);
+  animation: animate 6s linear infinite;
+  transform-origin: bottom right;
+  animation-delay: -3s;
+}
+
+.content {
+  position: absolute;
+  inset: 2px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.inputBox {
+  position: relative;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.inputBox input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  z-index: 10;
+  color: #1d2434;
+}
+
+.inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 20px 10px 10px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+  transform: translateX(-10px) translateY(-34px);
+  font-size: 0.75em;
+}
+
+.inputBox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 9;
+}
+
+.inputBox input:valid ~ i,
+.inputBox input:focus ~ i {
+  height: 40px;
+  transition: 0.5s;
 }

@@ -6,21 +6,7 @@ import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 import { Space_Grotesk } from "next/font/google";
 import { NextAppDirEmotionCacheProvider } from "./EmotionCache";
 
-const gFont = Space_Grotesk({
-  weight: ["300", "400", "500", "700"],
-  style: ["normal"],
-  subsets: ["latin"],
-});
-
 const themeOptions: ThemeOptions = {
-  typography: {
-    fontSize: 12,
-    fontFamily: gFont.style.fontFamily,
-    allVariants: {
-      letterSpacing: "0.3px",
-      fontWeight: 400,
-    },
-  },
   breakpoints: {
     values: {
       xs: 300, // phone
@@ -31,14 +17,18 @@ const themeOptions: ThemeOptions = {
     },
   },
   palette: {
-    // background: {
-    //   default: "#000000",
-    // },
-    // primary: {
-    //   main: "#ddd",
-    // },
+    background: {
+      default: "#070E36",
+    },
+    primary: {
+      main: "#070E36",
+    },
+    secondary: {
+      main: "#050B2F",
+    },
     text: {
-      primary: "#ffffff",
+      primary: "#2CBBFF",
+      secondary: "#E5FAFB",
     },
   },
 };
